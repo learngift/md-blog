@@ -1,0 +1,11 @@
+{
+  "name": "md-blog",
+  "version": "1.0.0",
+  "description": "tutorial pour faire un mini blog node mongodb inspiré de Markdown-Blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "pulpficti@gmail.com",
+  "license": "ISC"
+}
