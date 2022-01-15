@@ -36,3 +36,52 @@ Je crée les clefs et je l'associe à mon compte github
 
     git remote add origin git@github_as_pulp:learngift/md-blog.git
     git push -u origin master
+
+# 2021/09/24 Boilerplate
+La commande
+
+    npx express-generator-typescript mdblog
+
+permet de créer un projet qui ressemble à ce qu'on veut. On va s'en servir comme source de copier/coller.
+
+Dans MdBlog, on fait 
+
+    npm install typescript --save-dev
+    npm install @types/node --save-dev
+    npm install express
+    npm install @types/express --save-dev
+    npm install cookie-parser
+    npm install @types/cookie-parser --save-dev
+    npm install nodemon --save-dev
+    npm install esbuild --save-dev
+    npm install ts-node --save-dev
+    $(npm bin)/tsc -init
+
+Cette dernière commande crée un fichier tsconfig.json. On changera :
+
+"target" : "es6", car on ne supporte pas IE8  
+"outDir": "dist", et on créera ce répertoire  
+paths, include et exclude
+
+express est le framework minimal pour faire un serveur node. cookie-parser est un module essentiel pour parser les cookies avec express.
+nodemon est un utilitaire cli qui surveille le system de fichier pour redémarer le serveur lorsqu'un fichier source a changé.
+
+ts-node est un hack pour pouvoir lancer des fichiers ts directement, comme si c'était du javascript. Ca sert en développement.
+
+On modifie le fichier package.json pour ajouter la partie nodemonConfig:
+
+    "nodemonConfig": {
+      "watch": [
+        "src"
+      ],
+      "ext": "ts, html",
+      "ignore": [
+        "src/public"
+      ],
+      "exec": "./node_modules/.bin/ts-node -r tsconfig-paths/register ./src"
+    },
+
+
+
+Pour la structure du code, je me suis inpiré de /mnt/x/save_disk/src/GAE/helloworld (monté par mount_nfs2)
+
